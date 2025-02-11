@@ -16,8 +16,9 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/account/", include("account.urls")),  # Make sure this line is correct
     path("api/products/", include("products.urls")),
-    path("api/orders/", include("orders.urls")),
-    path("api/payments/", include("payments.urls")),
+    path("api/cart/", include("cart.urls")),  # Cart API
+    path("api/orders/", include("orders.urls")),  # Orders API
+    path("api/payments/", include("payments.urls")),  # Payments API
     path("docs/", schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 
