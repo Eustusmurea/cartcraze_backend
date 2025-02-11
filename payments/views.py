@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from orders.models import Order
 
 # Set the Stripe API Key
-stripe.api_key = settings.STRIPE_SECRET_KEY
+stripe.api_key = settings.STRIPE['SECRET_KEY'] 
 
 @api_view(['POST'])
 def create_payment(request):

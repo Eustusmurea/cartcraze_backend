@@ -29,7 +29,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-%g)h65x9pvvqk6!bn9f#dt3^owry@^@w=$$jt8t*=$^zgj^&x%'
 SECRET_KEY = os.getenv("SECRET_KEY")
-stripe.api_key = os.getenv("Stripe_Secret_Key")
+STRIPE = {
+    'SECRET_KEY': os.environ.get('STRIPE_SECRET_KEY'),
+    'PUBLIC_KEY': os.environ.get('STRIPE_PUBLIC_KEY')
+}
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -57,6 +60,8 @@ INSTALLED_APPS = [
     'users',
     'products',
     'cart',
+    'orders',
+    'payments',
 ]
 
 MIDDLEWARE = [
