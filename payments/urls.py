@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import create_payment, confirm_payment
+from .views import create_payment, confirm_payment  # Correctly imported
 
 urlpatterns = [
-    path('create/<int : order_id>', create_payment, name='create_payment'),
-    path('confirm/<int: order_id>', confirm_payment, name='confirm_payment'),
+    path('create-payment/', create_payment),  # No need to prefix with `views`
+    path('confirm-payment/', confirm_payment),
 ]
