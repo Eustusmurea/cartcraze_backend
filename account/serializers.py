@@ -20,13 +20,17 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"password":"Password must be at least 8 characters."})
         return data
     
-def create(self, validated_data):
-    validated_data.pop('password2')
-    password = validated_data.pop('password')
-    user = User(**validated_data)
-    user.set_password(password)
-    user.save()
-    return user
+
+    def create(self, validated_data):
+        """Create user and hash password correctly."""
+        validated_data.pop("password2")  # Remove password2 from validated data
+        password = validated_data.pop("password")  # Extract password
+
+        user = User(**validated_data)  # Create user instance
+        user.set_password(password)  # Hash password before saving
+        user.save()
+
+        return user
 
 class LoginSerializer(TokenObtainPairSerializer):
      @classmethod
