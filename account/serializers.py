@@ -14,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'password', 'password2']
 
     def validate(self, data):
-        if data["password"] != data.get["password2"]:
+        if data["password"] != data.get("password2"):
                 raise serializers.ValidationError({"password":"Passwords must match."})
         if len(data["password"]) < 8:
             raise serializers.ValidationError({"password":"Password must be at least 8 characters."})
