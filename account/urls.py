@@ -1,4 +1,4 @@
-# Description: This file contains the URL patterns for the users app.
+# Description: This file contains the URL patterns for the account app.
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
 

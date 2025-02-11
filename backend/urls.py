@@ -14,11 +14,11 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/account/", include("account.urls")),
+    path("api/account/", include("account.urls")),  # Make sure this line is correct
     path("api/products/", include("products.urls")),
     path("api/orders/", include("orders.urls")),
     path("api/payments/", include("payments.urls")),
-    path("docs/", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
+    path("docs/", schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 
 # Optionally, you can serve static files during development (if enabled in settings)
