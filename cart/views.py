@@ -12,7 +12,7 @@ class CartViewSet(viewsets.ModelViewSet):
         return Cart.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)  # Ensure the cart is linked to the logged-in user
+        serializer.save(user=self.request.user)  
 
 
 class CartItemViewSet(viewsets.ModelViewSet):
