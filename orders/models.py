@@ -1,5 +1,5 @@
 from django.db import models
-from authz.models import User
+from account.models import User
 from products.models import Product
 
 # Create your models here.

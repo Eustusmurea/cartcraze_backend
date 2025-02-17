@@ -1,6 +1,6 @@
 from django.db import models
 from products.models import Product
-from authz.models import User
+from account.models import User
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
