@@ -31,6 +31,25 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+    
+    def update(self, instance, validated_data):
+        """Update user and handle password changes."""
+        password = validated_data.pop("password", None)  # Extract password if provided
+        password2 = validated_data.pop("password2", None)
+
+        if password:
+            if password != password2:
+                raise serializers.ValidationError({"password": "Passwords must match."})
+            if len(password) < 8:
+                raise serializers.ValidationError({"password": "Password must be at least 8 characters."})
+            instance.set_password(password)  # Hash password if it's being updated
+
+        # Update other fields
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+
+        return instance
 
 class LoginSerializer(TokenObtainPairSerializer):
      @classmethod
